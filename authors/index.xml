@@ -5,6 +5,16 @@
     <link>http://jdeepd.github.io/authors/</link>
     <description>Recent content in Authors on Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="http://jdeepd.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Mon, 22 Nov 2021 21:19:21 +0530</lastBuildDate><atom:link href="http://jdeepd.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JDeepD</title>
+      <link>http://jdeepd.github.io/authors/jdeepd/</link>
+      <pubDate>Mon, 22 Nov 2021 21:19:21 +0530</pubDate>
+      
+      <guid>http://jdeepd.github.io/authors/jdeepd/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

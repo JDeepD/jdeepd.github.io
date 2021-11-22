@@ -5,7 +5,19 @@
     <link>http://jdeepd.github.io/</link>
     <description>Recent content on Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="http://jdeepd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Mon, 22 Nov 2021 21:19:21 +0530</lastBuildDate><atom:link href="http://jdeepd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bisect: A severely underated Git command</title>
+      <link>http://jdeepd.github.io/posts/1/</link>
+      <pubDate>Mon, 22 Nov 2021 21:19:21 +0530</pubDate>
+      
+      <guid>http://jdeepd.github.io/posts/1/</guid>
+      <description>git bisect    Ever faced a situation where you made multiple commits to your project only to break a feature which you are sure it worked properly before you went on the commit spree?
+How on earth do you even plan to begin debugging the code in such a scenario?
+One could go on a brute force approach but wouldn&amp;rsquo;t it be much easier(to debug) if git just tells you which commit messed up your feature?</description>
+    </item>
+    
     <item>
       <title>About</title>
       <link>http://jdeepd.github.io/about/</link>
