@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jaydeep on Home</title>
+    <link>http://jdeepd.github.io/authors/jaydeep/</link>
+    <description>Recent content in Jaydeep on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 22 Nov 2021 19:06:44 +0530</lastBuildDate><atom:link href="http://jdeepd.github.io/authors/jaydeep/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://jdeepd.github.io/posts/testpost/</link>
+      <pubDate>Mon, 22 Nov 2021 19:06:44 +0530</pubDate>
+      
+      <guid>http://jdeepd.github.io/posts/testpost/</guid>
+      <description>Lorem ipsum blah blah
+Inline code public class SwapNumbers { public static void main(String[] args) { float first = 1.20f, second = 2.45f; System.out.println(&amp;#34;--Before swap--&amp;#34;); System.out.println(&amp;#34;First number = &amp;#34; + first); System.out.println(&amp;#34;Second number = &amp;#34; + second); // Value of first is assigned to temporary  float temporary = first; // Value of second is assigned to first  first = second; // Value of temporary (which contains the initial value of first) is assigned to second  second = temporary; System.</description>
+    </item>
+    
+  </channel>
+</rss>
