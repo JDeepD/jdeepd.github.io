@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Jaydeep Das">
+    <meta name="description" content="A brief introduction to Git bisect and its application">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bisect: A severely underated Git command"/>
+<meta name="twitter:description" content="A brief introduction to Git bisect and its application"/>
+
+    <meta property="og:title" content="Bisect: A severely underated Git command" />
+<meta property="og:description" content="A brief introduction to Git bisect and its application" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdeepd.github.io/posts/1.d/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-22T21:19:21+05:30" />
+<meta property="article:modified_time" content="2021-11-22T21:19:21+05:30" />
+
+
+
+    <title>
+  Bisect: A severely underated Git command · Home
+</title>
+
+    
+      <link rel="canonical" href="https://jdeepd.github.io/posts/1.d/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.5174d879ad77d9e444c4da137d3f4a63905edc70d347efbc90d6c06e76b58263.css" integrity="sha256-UXTYea132eRExNoTfT9KY5Be3HDTR&#43;&#43;8kNbAbna1gmM=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.3820b6053ca1b6473f1d15daae20719d25fdad76cb9ae8b95ba2c2f56a31c9cb.css" integrity="sha256-OCC2BTyhtkc/HRXariBxnSX9rXbLmui5W6LC9Woxycs=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.89.3" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-dark">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Home
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://jdeepd.github.io/posts/1.d/">
+              Bisect: A severely underated Git command
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-11-22T21:19:21&#43;05:30'>
+                November 22, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/jdeepd/">JDeepD</a></div>
+          
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/git/">git</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="git-bisect">
+  <code>git bisect</code>
+  <a class="heading-link" href="#git-bisect">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<p>Ever faced a situation where you made multiple commits to your project only to break a feature which you are sure it worked properly before you went on the commit spree?</p>
+<p>How on earth do you even plan to begin debugging the code in such a scenario?</p>
+<p>One could go on a brute force approach but wouldn&rsquo;t it be much easier(to debug) if git just tells you which commit messed up your feature?</p>
+<p><code>git bisect</code> does exactly that.</p>
+<p>Suppose I have a commit history as shown below:</p>
+<p><img src="/posts/1.d/img.d/1.png" alt="Git Log"></p>
+<p>Lets say my feature worked properly in <code>29aa243</code>. I want to find which commit between  <code>29aa243</code> and <code>d3bf6d2</code> broke my feature.</p>
+<p>Before beginning to bisect the commits, lets get a basic understanding of the involved commands</p>
+<h4 id="to-start-bisecting-we-run-the-command-">
+  To start bisecting, we run the command :
+  <a class="heading-link" href="#to-start-bisecting-we-run-the-command-">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git bisect start</code></pre></div>
+<p>This would start a bisecting session where you have to test your feature and tell git if it works fine or is still broken.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git bisect good <span style="color:#f92672">[</span>optional commit<span style="color:#f92672">]</span> <span style="color:#75715e"># If the feature works fine</span>
+git bisect bad  <span style="color:#f92672">[</span>optional commit<span style="color:#f92672">]</span> <span style="color:#75715e"># If the feature is still broken</span>
+
+</code></pre></div><p>This is a simple logic graph of the process:</p>
+<p><img src="/posts/1.d/img.d/2.png" alt="Logic Graph"></p>
+<p>Now, We have to first initialize which commit is <code>good</code> and which is <code>bad</code> . In this scenario, my <code>d3bf6d2</code> (current HEAD) is bad and <code>29aa243</code> is good. Do this with the help of commands given above</p>
+<p><img src="/posts/1.d/img.d/3.png" alt="Git bisect"></p>
+<p>Now test your feature and subsequently go through the logic graph given above(<strong>Note: It is very important that you donot begin to commit on the codebase in a Bisecting Session. Since the HEAD remains in a detached state in such session, it would give you a hard time fixing everything later. See the last part of this article on how to exit Bisecting Session</strong>).</p>
+<p>In the end of all revisions, git will tell which  commit broke your feature :]</p>
+<p><img src="/posts/1.d/img.d/4.png" alt="Git Bisect 2"></p>
+<p>Now that you have found your guilty commit, its time to reattach your <code>Detached HEAD</code> back to <code>master</code>. Do this to reattach your detached HEAD</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git bisect reset
+</code></pre></div><p>Good luck with debugging that commit 👍.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+    2021
+     Jaydeep Das 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>
