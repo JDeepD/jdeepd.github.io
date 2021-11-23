@@ -8,6 +8,15 @@
     <language>en</language>
     <lastBuildDate>Mon, 22 Nov 2021 21:19:21 +0530</lastBuildDate><atom:link href="https://jdeepd.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>notes</title>
+      <link>https://jdeepd.github.io/notes/</link>
+      <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jdeepd.github.io/notes/</guid>
+      <description>Ranger tips:     Type S while in a particular directory in ranger to cd into that directory zh for toggling hidden files cw to rename file under cursor dD&amp;lt;Enter&amp;gt; to delete file under cursor For more, visit here  Donot step on your own foot techniques:     Install packages wisely. All package binaries installed by pacman go into /usr/bin. All packages installed by other means should(must?</description>
+    </item>
+    
+    <item>
       <title>Bisect: A severely underated Git command</title>
       <link>https://jdeepd.github.io/posts/1.d/</link>
       <pubDate>Mon, 22 Nov 2021 21:19:21 +0530</pubDate>
