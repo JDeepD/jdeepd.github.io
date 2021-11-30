@@ -156,10 +156,16 @@ trouble when you sync/upgrade packages with pacman later on.</li>
   </a>
 </h2>
 <ol>
-<li>Install <a href="https://gitlab.com/screenkey/screenkey">Screenkey</a> and <a href="https://github.com/naelstrof/slop">slop</a>.</li>
-<li>Run <code>slop -n -g '%g'</code>. A crosshair should appear. Using that crosshair, select the area in which you want</li>
-<li>Screenkey to display the keystrokes. Get the geometry data(eg:<code>778x81+514+983%</code>). Now run Screenkey with these</li>
-<li>data : <code>screenkey -p fixed -g &lt;geometry data&gt;</code>. In my case, its <code>screenkey -p fixed -g 744x67+623+1010</code>.</li>
+<li>
+<p>Install <a href="https://gitlab.com/screenkey/screenkey">Screenkey</a> and <a href="https://github.com/naelstrof/slop">slop</a>.</p>
+</li>
+<li>
+<p>Run <code>slop -n -g '%g'</code>. A crosshair should appear. Using that crosshair, select the area in which you want
+Screenkey to display the keystrokes. Get the geometry data(eg:<code>778x81+514+983%</code>).</p>
+</li>
+<li>
+<p>Now run Screenkey with these data : <code>screenkey -p fixed -g &lt;geometry data&gt;</code>. In my case, its <code>screenkey -p fixed -g 744x67+623+1010</code>.</p>
+</li>
 </ol>
 <p>Pro Tip: Use a Keybinding manager like <a href="https://wiki.archlinux.org/title/Xbindkeys">XBindkeys</a> to bind these commands
 to specific keypresses. Gnome comes with an inbuilt Keybinding Shortcut manager(Under Settings&gt;Keyboard&gt;Shortcut).
@@ -198,18 +204,18 @@ See <a href="https://github.com/MattesGroeger/vim-bookmarks/blob/master/README.m
   </a>
 </h5>
 <ol>
-<li>Hello &ndash;<code>ysiw&quot;</code> (yank surround in word with &ldquo;)&mdash;&gt; &ldquo;Hello&rdquo;</li>
-<li>Hello &ndash;<code>ysiw*</code> (yank surround in word with *)&mdash;&gt; <em>Hello</em></li>
+<li>Hello &ndash;<code>ysiw&quot;</code> (yank surround in word with &ldquo;) &mdash;&gt; &ldquo;Hello&rdquo;</li>
+<li>Hello &ndash;<code>ysiw*</code> (yank surround in word with *) &mdash;&gt; <em>Hello</em></li>
 <li>&ldquo;hello world&rdquo; &ndash;<code>cs&quot;)</code> change surround &quot; with ) &mdash;&mdash;-&gt; (hello world)</li>
-<li>&ldquo;hello world&rdquo; &ndash;<code>cs&quot;&lt;q&gt;</code> change surround &quot; with <!-- raw HTML omitted --> tag &ndash;&gt; <!-- raw HTML omitted -->hello world<!-- raw HTML omitted --></li>
-<li><!-- raw HTML omitted -->hello world<!-- raw HTML omitted --> &ndash;<code>cst&quot;</code> change surround tag &ndash;&gt; &ldquo;hello world&rdquo;</li>
+<li>&ldquo;hello world&rdquo; &ndash;<code>cs&quot;&lt;q&gt;</code> change surround &quot; with <!-- raw HTML omitted --> tag &mdash;&gt; <!-- raw HTML omitted -->hello world<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->hello world<!-- raw HTML omitted --> &ndash;<code>cst&quot;</code> change surround tag &mdash;&gt; &ldquo;hello world&rdquo;</li>
 <li>&ldquo;hello world&rdquo; &ndash;<code>ds&quot;</code> delete surround &quot; &mdash;&mdash;&mdash;-&gt; hello world</li>
 </ol>
 <p>Multiple words surround(using Visual mode)</p>
 <p>Go in visual mode and select the words which you want to surround.
 Then use <code>S&lt;surround character&gt;</code> to surround the words with that character.</p>
-<p>Lorem Ipsum is simply dummy text of the printing</p>
-<p>With cursor on L, <code>ys2aw&quot;</code> (yank surround 2 around words with &ldquo;) =&gt; &ldquo;Lorem Ipsum&rdquo; is simply dummy text of the printing</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Lorem Ipsum is simply dummy text of the printing 
+</code></pre></div><p>With cursor on L, <code>ys2aw&quot;</code> (yank surround 2 around words with &ldquo;) =&gt; &ldquo;Lorem Ipsum&rdquo; is simply dummy text of the printing</p>
 
   </article>
 </section>
