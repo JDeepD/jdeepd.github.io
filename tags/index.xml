@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Home</title>
+    <title>Tags on home</title>
     <link>https://jdeepd.github.io/tags/</link>
-    <description>Recent content in Tags on Home</description>
+    <description>Recent content in Tags on home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 22 Nov 2021 21:19:21 +0530</lastBuildDate><atom:link href="https://jdeepd.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jdeepd.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mathematics</title>
+      <link>https://jdeepd.github.io/tags/mathematics/</link>
+      <pubDate>Tue, 30 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jdeepd.github.io/tags/mathematics/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>git</title>
       <link>https://jdeepd.github.io/tags/git/</link>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mathematics on home</title>
+    <link>https://jdeepd.github.io/tags/mathematics/</link>
+    <description>Recent content in mathematics on home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 30 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jdeepd.github.io/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An interesting problem(and solution) in Probability</title>
+      <link>https://jdeepd.github.io/posts/2.d/</link>
+      <pubDate>Tue, 30 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jdeepd.github.io/posts/2.d/</guid>
+      <description>Urn A contains 6 red and 4 black balls. Urn B contains 4 red and 6 black balls. One ball is drawn at random from Urn A and placed in Urn B. Then, one ball is drawn at random from Urn B and placed in Urn A. Now, If one ball is drawn from Urn A, find the probability that it is red. (Cengage JEE Adv Algebra, 3e)
+ The question is straight forward.</description>
+    </item>
+    
+  </channel>
+</rss>
