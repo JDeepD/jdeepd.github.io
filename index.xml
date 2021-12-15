@@ -38,13 +38,14 @@ One could go on a brute force approach but wouldn&amp;rsquo;t it be much easier(
     </item>
     
     <item>
-      <title>about me</title>
+      <title></title>
       <link>https://jdeepd.github.io/about/</link>
       <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://jdeepd.github.io/about/</guid>
-      <description>I am a student who gets bored easily. So, if I get free time, I write some blogs.
-Email : (Can be found on my github profile)</description>
+      <description>about me    I am a student who gets bored easily. So, if I get free time, I write some blogs.
+Email : (Can be found on my github profile)
+about site     powered by hugo theme: hugo-coder font: iosevka social: twt; discord  about setup     laptop: vivobook x512-fl os: arch linux on gnome editor: neovim term: kitty with tmux  </description>
     </item>
     
   </channel>
