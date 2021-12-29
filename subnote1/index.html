@@ -149,11 +149,11 @@ int main(int argc, char** argv) { return 0; } &gt;&gt;&gt; ./test in1 in2 Here,
 </ul>
 <hr>
 <p>Consider this code:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">**</span> argv)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">int</span> argc, <span style="color:#8be9fd">char</span><span style="color:#ff79c6">**</span> argv)
 {
-   <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+   <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
 }
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&gt;&gt;&gt; ./test in1 in2
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&gt;&gt;&gt; ./test in1 in2
 </code></pre></div><p>Here,</p>
 <ul>
 <li>argc gives the number of arguments passed(3 in this case)</li>
@@ -193,13 +193,13 @@ third character  of the first argument : &ldquo;t&rdquo;. Prefer it anytime over
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span><span style="color:#ff79c6"></span>
+<span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>)
 {
-    <span style="color:#66d9ef">char</span> arr[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
-    printf(<span style="color:#e6db74">&#34;%c </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, arr[<span style="color:#ae81ff">0</span>]) <span style="color:#75715e">//prints h
-</span><span style="color:#75715e"></span>}
+    <span style="color:#8be9fd">char</span> arr[] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;hello&#34;</span>;
+    printf(<span style="color:#f1fa8c">&#34;%c </span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, arr[<span style="color:#bd93f9">0</span>]) <span style="color:#6272a4">//prints h
+</span><span style="color:#6272a4"></span>}
 </code></pre></div><p>So, here the <code>char arr[]</code> decomposes into a pointer which points to the first character of the string &ldquo;hello&rdquo; (i.e &ldquo;h&rdquo;)</p>
 <p><img src="/subnote1/img/2.jpg" alt="indexing"></p>
 <p>So, when you do <code>arr[index]</code>, it becomes <code>*(arr + index)</code>. <code>*</code> is used for <a href="https://stackoverflow.com/a/4955259/12982627">dereferencing</a> whatever is inside the memory address : <code>(arr + index)</code></p>
@@ -214,11 +214,11 @@ third character  of the first argument : &ldquo;t&rdquo;. Prefer it anytime over
   </a>
 </h3>
 <p>Yes, Its a trivial thing but confusing because I initially thought it takes in a string(or array of characters)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span><span style="color:#ff79c6"></span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>)
 {
-    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>; 
-    printf(<span style="color:#e6db74">&#34;%s&#34;</span>, str)
+    <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>str <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Hello&#34;</span>; 
+    printf(<span style="color:#f1fa8c">&#34;%s&#34;</span>, str)
 }
 </code></pre></div><p><strong>Notice here that <code>%s</code> is actually holding <code>str</code>(a pointer) and not the dereferenced <code>*str</code></strong></p>
 <hr>
@@ -230,7 +230,7 @@ third character  of the first argument : &ldquo;t&rdquo;. Prefer it anytime over
 </h3>
 <p>Thats right. Array as an argument to a function does not actually exist in C.
 So what happens when you do something like this?:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">int</span> arr[])
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">func</span>(<span style="color:#8be9fd">int</span> arr[])
 {
 }
 </code></pre></div><p>If you pass an array to <code>func</code>, what gets passed into <code>func</code> is actually a <strong>pointer which stores the
