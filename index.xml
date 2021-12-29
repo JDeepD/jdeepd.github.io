@@ -27,6 +27,18 @@
     </item>
     
     <item>
+      <title>s1: Some notes about char **argv</title>
+      <link>https://jdeepd.github.io/subnote1/</link>
+      <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jdeepd.github.io/subnote1/</guid>
+      <description>Disclaimer: Notes can have errors. Mail me if you find some.     Few points to remember:
+ Array indexing in C A trivial note about %s placeholder You cant actually pass an array to a function in C   Consider this code:
+int main(int argc, char** argv) { return 0; } &amp;gt;&amp;gt;&amp;gt; ./test in1 in2 Here,
+ argc gives the number of arguments passed(3 in this case) argv gives you access to all the command line arguments passed when running the program  argv[0] is the first argument passed(i.</description>
+    </item>
+    
+    <item>
       <title>Bisect: A severely underated Git command</title>
       <link>https://jdeepd.github.io/posts/1.d/</link>
       <pubDate>Mon, 22 Nov 2021 21:19:21 +0530</pubDate>
@@ -45,7 +57,8 @@ One could go on a brute force approach but wouldn&amp;rsquo;t it be much easier(
       <guid>https://jdeepd.github.io/about/</guid>
       <description>about me    I am a student who gets bored easily. So, if I get free time, I write some blogs.
 Email : (Can be found on my github profile)
-about site     powered by hugo theme: hugo-coder font: iosevka social: twt; discord  about setup     laptop: vivobook x512-fl os: arch linux on gnome editor: neovim term: kitty with tmux  </description>
+about site     powered by hugo theme: hugo-coder font: iosevka social: twt; discord  The source of this site is licensed under MIT License
+The contents of this site is licensed under CC BY 4.0 unless otherwise stated.</description>
     </item>
     
   </channel>
