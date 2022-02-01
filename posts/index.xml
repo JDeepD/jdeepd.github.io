@@ -6,7 +6,17 @@
     <description>Recent content in Posts on home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 30 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jdeepd.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jdeepd.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A tour of my workflow</title>
+      <link>https://jdeepd.github.io/posts/3.d/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jdeepd.github.io/posts/3.d/</guid>
+      <description>My main workflow consists of multiple browser tabs, kitty and a tmux session along with neovim. All of them are customised to my liking ofcourse(although kitty is just pretty in default)
+For browser, I primarily use Chrome(don&amp;rsquo;t ask me why. Its just that all my accounts get instant login there.) I use the vimium extension and Adblock extension Both of them work out of the box with no configuration required.</description>
+    </item>
+    
     <item>
       <title>An interesting problem(and solution) in Probability</title>
       <link>https://jdeepd.github.io/posts/2.d/</link>
