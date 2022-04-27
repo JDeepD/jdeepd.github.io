@@ -254,7 +254,7 @@ Take the bitwise <code>OR</code> of <code>flags</code> and a number whose last b
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h3>
-<p>We can turn off bits, by using the bitwise <code>AND</code> and <code>NOT</code> operators.</p>
+<p>We can turn off bits, by using the bitwise <code>AND</code> and <code>~</code>(bitwise complement) operators.</p>
 <p>Suppose, the current state of <code>flags</code> is <code>00000011</code> and we want to turn off
 the second last bit.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>flags <span style="color:#ff79c6">=</span> flags <span style="color:#ff79c6">&amp;</span> <span style="color:#ff79c6">~</span>(<span style="color:#bd93f9">1</span><span style="color:#ff79c6">&lt;&lt;</span><span style="color:#bd93f9">1</span>)
@@ -308,6 +308,7 @@ to know how to actually query the state of bit in a particular location.</p>
 <p>Using all the above bitmasking functions, we can write a cleaner code with less
 memory footprint. Our original code would look like:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdint.h&gt;</span><span style="color:#ff79c6">
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">#define ISPOS (1&lt;&lt;0)
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#define ISODD (1&lt;&lt;1)
