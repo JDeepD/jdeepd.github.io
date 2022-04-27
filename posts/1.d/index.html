@@ -62,7 +62,7 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
-    <meta name="generator" content="Hugo 0.92.2" />
+    <meta name="generator" content="Hugo 0.96.0" />
   </head>
 
   
@@ -172,12 +172,11 @@
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git bisect start</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git bisect start</span></span></code></pre></div>
 <p>This would start a bisecting session where you have to test your feature and tell git if it works fine or is still broken.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git bisect good <span style="color:#ff79c6">[</span>optional commit<span style="color:#ff79c6">]</span> <span style="color:#6272a4"># If the feature works fine</span>
-git bisect bad  <span style="color:#ff79c6">[</span>optional commit<span style="color:#ff79c6">]</span> <span style="color:#6272a4"># If the feature is still broken</span>
-
-</code></pre></div><p>This is a simple logic graph of the process:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git bisect good <span style="color:#ff79c6">[</span>optional commit<span style="color:#ff79c6">]</span> <span style="color:#6272a4"># If the feature works fine</span>
+</span></span><span style="display:flex;"><span>git bisect bad  <span style="color:#ff79c6">[</span>optional commit<span style="color:#ff79c6">]</span> <span style="color:#6272a4"># If the feature is still broken</span>
+</span></span></code></pre></div><p>This is a simple logic graph of the process:</p>
 <p><img src="/posts/1.d/img.d/2.png" alt="Logic Graph"></p>
 <p>Now, We have to first initialize which commit is <code>good</code> and which is <code>bad</code> . In this scenario, my <code>d3bf6d2</code> (current HEAD) is bad and <code>29aa243</code> is good. Do this with the help of commands given above</p>
 <p><img src="/posts/1.d/img.d/3.png" alt="Git bisect"></p>
@@ -185,8 +184,8 @@ git bisect bad  <span style="color:#ff79c6">[</span>optional commit<span style="
 <p>In the end of all revisions, git will tell which  commit broke your feature :]</p>
 <p><img src="/posts/1.d/img.d/4.png" alt="Git Bisect 2"></p>
 <p>Now that you have found your guilty commit, its time to reattach your <code>Detached HEAD</code> back to <code>master</code>. Do this to reattach your detached HEAD</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git bisect reset
-</code></pre></div><p>Good luck with debugging that commit 👍.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git bisect reset
+</span></span></code></pre></div><p>Good luck with debugging that commit 👍.</p>
 
       </div>
 
@@ -223,7 +222,7 @@ git bisect bad  <span style="color:#ff79c6">[</span>optional commit<span style="
 
     
       
-      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+      <script src="/js/coder.min.f453d26c79f010446cf0d9770197f77de32c07b7a5512d141a286247fe154a22.js" integrity="sha256-9FPSbHnwEERs8Nl3AZf3feMsB7elUS0UGihiR/4VSiI="></script>
     
 
     

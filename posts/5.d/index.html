@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Jaydeep Das">
+    <meta name="description" content="Suppose you are given a situation where you have to produce some output which depends on various arguments(flags) that the user provides.
+For ex, lets say you are given a number and you are asked to do some tests on it:
+ Is the number postive? Is the magnitude(number) odd? Is the magnitude(number) prime?  You are also asked to save all the test results in memory so that you can pass it to other functions if required.">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bit masking and bit flags. Managing data efficiently"/>
+<meta name="twitter:description" content="Suppose you are given a situation where you have to produce some output which depends on various arguments(flags) that the user provides.
+For ex, lets say you are given a number and you are asked to do some tests on it:
+ Is the number postive? Is the magnitude(number) odd? Is the magnitude(number) prime?  You are also asked to save all the test results in memory so that you can pass it to other functions if required."/>
+
+    <meta property="og:title" content="Bit masking and bit flags. Managing data efficiently" />
+<meta property="og:description" content="Suppose you are given a situation where you have to produce some output which depends on various arguments(flags) that the user provides.
+For ex, lets say you are given a number and you are asked to do some tests on it:
+ Is the number postive? Is the magnitude(number) odd? Is the magnitude(number) prime?  You are also asked to save all the test results in memory so that you can pass it to other functions if required." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdeepd.github.io/posts/5.d/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-26T00:00:00+00:00" />
+
+
+
+    <title>
+  Bit masking and bit flags. Managing data efficiently · home
+</title>
+
+    
+      <link rel="canonical" href="https://jdeepd.github.io/posts/5.d/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.7720a45b415e810c6b1e1d704e813c34743e4ffada8914ff4955217ea05f71d1.css" integrity="sha256-dyCkW0FegQxrHh1wToE8NHQ&#43;T/raiRT/SVUhfqBfcdE=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.3820b6053ca1b6473f1d15daae20719d25fdad76cb9ae8b95ba2c2f56a31c9cb.css" integrity="sha256-OCC2BTyhtkc/HRXariBxnSX9rXbLmui5W6LC9Woxycs=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.96.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-dark">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      home
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">about</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/notes/">notes</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://jdeepd.github.io/posts/5.d/">
+              Bit masking and bit flags. Managing data efficiently
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2022-04-26T00:00:00Z'>
+                April 26, 2022
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              4-minute read
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/jdeepd/">JDeepD</a></div>
+          
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/c-lang/">C-lang</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>Suppose you are given a situation where you have to produce some output
+which depends on various arguments(flags) that the user provides.</p>
+<p>For ex, lets say you are given a number and you are asked to do some tests on it:</p>
+<ol>
+<li>Is the number postive?</li>
+<li>Is the magnitude(number) odd?</li>
+<li>Is the magnitude(number) prime?</li>
+</ol>
+<p>You are also asked to save all the test results in memory so that you can
+pass it to other functions if required.</p>
+<p>A simple implementation would be:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// fill in the code
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">checkPos</span>(<span style="color:#8be9fd">int</span> x){ };
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">checkOdd</span>(<span style="color:#8be9fd">int</span> x){ };
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">checkPrime</span>(<span style="color:#8be9fd">int</span> x){ };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd">int</span> isPos, isOdd, isPrime;
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd">int</span> x;
+</span></span><span style="display:flex;"><span>	printf(<span style="color:#f1fa8c">&#34;Enter a number: &#34;</span>);
+</span></span><span style="display:flex;"><span>	scanf(<span style="color:#f1fa8c">&#34;%d&#34;</span>, <span style="color:#ff79c6">&amp;</span>x);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	isPos <span style="color:#ff79c6">=</span> checkPos(x);
+</span></span><span style="display:flex;"><span>	isOdd <span style="color:#ff79c6">=</span> checkOdd(x);
+</span></span><span style="display:flex;"><span>	isPrime <span style="color:#ff79c6">=</span> checkPrime(x);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>So here, we have saved the answer to each result in 3 int variables. So basically,
+it takes up 12 bytes(96 bits) just to store 3 results. It has a large memory footprint
+and there is actually a better way to acheive the same result by utilising individual bits
+of an integer variable to represent the result.</p>
+<p>We can make a 8 bit unsigned int (<code>uint8_t</code>) and utilise each individual bit of that
+integer to store a binary result(Notice that the answer to all the questions is binary Yes/No).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// fill in the code
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">checkPos</span>(<span style="color:#8be9fd">int</span> x){ };
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">checkOdd</span>(<span style="color:#8be9fd">int</span> x){ };
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">checkPrime</span>(<span style="color:#8be9fd">int</span> x){ };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd">uint8_t</span> flags <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd">int</span> x;
+</span></span><span style="display:flex;"><span>	printf(<span style="color:#f1fa8c">&#34;Enter a number: &#34;</span>);
+</span></span><span style="display:flex;"><span>	scanf(<span style="color:#f1fa8c">&#34;%d&#34;</span>, <span style="color:#ff79c6">&amp;</span>x);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Here, bitwise representation of <code>flags</code> is just : <code>00000000</code></p>
+<p>We can use the 3 right most bits to store the result of the questions.
+For example, if <code>x</code> is postive and odd but not prime, then <code>flag</code> should be:</p>
+<p><code>00000011</code></p>
+<p>last bit: isPositive?</p>
+<p>second last bit: isOdd?</p>
+<p>third last bit: isPrime?</p>
+<p>The methods that we will be using to change individual bits of <code>flags</code> is called
+<a href="https://en.wikipedia.org/wiki/Mask_(computing)">Bitmasking</a>.</p>
+<hr>
+<p>Lets see some common Bitmask operations:</p>
+<h3 id="1-turning-on-bits">
+  1. Turning ON bits
+  <a class="heading-link" href="#1-turning-on-bits">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>To turn on a bit in any particular location is basically changing that bit value to 1.
+We will use the bitwise <code>OR</code> for that.</p>
+<p>In the above case, since <code>x</code> is postive, we need to turn of the last bit.
+Take the bitwise <code>OR</code> of <code>flags</code> and a number whose last bit is 1 and all other bits are 0.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>flags <span style="color:#ff79c6">=</span> flags <span style="color:#ff79c6">|</span> (<span style="color:#bd93f9">1</span><span style="color:#ff79c6">&lt;&lt;</span><span style="color:#bd93f9">0</span>)
+</span></span></code></pre></div><p>So here,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>flags --&gt; 00000000
+</span></span><span style="display:flex;"><span>(1&lt;&lt;0)--&gt; 00000001
+</span></span><span style="display:flex;"><span>========================== OR
+</span></span><span style="display:flex;"><span>flags --&gt; 00000001
+</span></span></code></pre></div><p>Similarly, for turning on the second last bit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>flags <span style="color:#ff79c6">=</span> flags <span style="color:#ff79c6">|</span> (<span style="color:#bd93f9">1</span><span style="color:#ff79c6">&lt;&lt;</span><span style="color:#bd93f9">1</span>)
+</span></span></code></pre></div><p>So here,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>flags --&gt; 00000000
+</span></span><span style="display:flex;"><span>(1&lt;&lt;1)--&gt; 00000010
+</span></span><span style="display:flex;"><span>========================== OR
+</span></span><span style="display:flex;"><span>flags --&gt; 00000010
+</span></span></code></pre></div><p>We can also turn on multiple bits at the same time:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>flags <span style="color:#ff79c6">=</span> flags <span style="color:#ff79c6">|</span> (<span style="color:#bd93f9">1</span><span style="color:#ff79c6">&lt;&lt;</span><span style="color:#bd93f9">0</span>) <span style="color:#ff79c6">|</span> (<span style="color:#bd93f9">1</span><span style="color:#ff79c6">&lt;&lt;</span><span style="color:#bd93f9">1</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>flags --&gt; 00000000
+</span></span><span style="display:flex;"><span>(1&lt;&lt;0)--&gt; 00000001
+</span></span><span style="display:flex;"><span>(1&lt;&lt;1)--&gt; 00000010
+</span></span><span style="display:flex;"><span>========================== OR
+</span></span><span style="display:flex;"><span>flags --&gt; 00000011
+</span></span></code></pre></div><hr>
+<h3 id="2-turning-off-bits">
+  2. Turning OFF bits
+  <a class="heading-link" href="#2-turning-off-bits">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>We can turn off bits, by using the bitwise <code>AND</code> and <code>NOT</code> operators.</p>
+<p>Suppose, the current state of <code>flags</code> is <code>00000011</code> and we want to turn off
+the second last bit.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>flags <span style="color:#ff79c6">=</span> flags <span style="color:#ff79c6">&amp;</span> <span style="color:#ff79c6">~</span>(<span style="color:#bd93f9">1</span><span style="color:#ff79c6">&lt;&lt;</span><span style="color:#bd93f9">1</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>flags --&gt;  00000011
+</span></span><span style="display:flex;"><span>~(1&lt;&lt;1)--&gt; 11111101
+</span></span><span style="display:flex;"><span>========================== AND
+</span></span><span style="display:flex;"><span>flags --&gt;  00000001
+</span></span></code></pre></div><hr>
+<h3 id="3-toggling-bits">
+  3. Toggling bits
+  <a class="heading-link" href="#3-toggling-bits">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>Toggling bits basically means to toggle(inverse) the state of a particular bit.
+If the bit is ON, turn it OFF and vice versa.</p>
+<p>It can be acheived by using the <code>XOR</code> operator.</p>
+<p>Suppose we want to toggle the second last bit of <code>00000011</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>flags <span style="color:#ff79c6">=</span> flags <span style="color:#ff79c6">^</span> (<span style="color:#bd93f9">1</span><span style="color:#ff79c6">&lt;&lt;</span><span style="color:#bd93f9">1</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>flags --&gt;  00000011
+</span></span><span style="display:flex;"><span>(1&lt;&lt;1)--&gt;  00000010
+</span></span><span style="display:flex;"><span>========================== XOR
+</span></span><span style="display:flex;"><span>flags --&gt;  00000001
+</span></span></code></pre></div><p>Now, lets toggle the third last bit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>flags <span style="color:#ff79c6">=</span> flags <span style="color:#ff79c6">^</span> (<span style="color:#bd93f9">1</span><span style="color:#ff79c6">&lt;&lt;</span><span style="color:#bd93f9">2</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>flags --&gt;  00000001
+</span></span><span style="display:flex;"><span>(1&lt;&lt;2)--&gt;  00000100
+</span></span><span style="display:flex;"><span>========================== XOR
+</span></span><span style="display:flex;"><span>flags --&gt;  00000101
+</span></span></code></pre></div><hr>
+<h3 id="4-querying-the-status-of-bits">
+  4. Querying the status of bits.
+  <a class="heading-link" href="#4-querying-the-status-of-bits">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>Now that we know how to mask individual bits, its also important
+to know how to actually query the state of bit in a particular location.</p>
+<p>We use the <code>AND</code> operator for this. Lets say our flag is <code>00000111</code></p>
+<p>We need to know the state of third last bit.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>query <span style="color:#ff79c6">=</span> flags <span style="color:#ff79c6">&amp;</span> (<span style="color:#bd93f9">1</span><span style="color:#ff79c6">&lt;&lt;</span><span style="color:#bd93f9">2</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>flags --&gt;  00000111
+</span></span><span style="display:flex;"><span>(1&lt;&lt;2)--&gt;  00000100
+</span></span><span style="display:flex;"><span>========================== AND
+</span></span><span style="display:flex;"><span>query --&gt;  00000100
+</span></span></code></pre></div><p>By comparing <code>query</code> with <code>(1&lt;&lt;2)</code>, we can know the state:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">if</span> (query <span style="color:#ff79c6">==</span> (<span style="color:#bd93f9">1</span><span style="color:#ff79c6">&lt;&lt;</span><span style="color:#bd93f9">2</span>)){
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// third last bit is ON.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}
+</span></span></code></pre></div><hr>
+<p>Using all the above bitmasking functions, we can write a cleaner code with less
+memory footprint. Our original code would look like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#define ISPOS (1&lt;&lt;0)
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#define ISODD (1&lt;&lt;1)
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#define ISPRIME (1&lt;&lt;2)
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// fill in the code such 
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">// that each function returns 
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">// corresponding macro.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">checkPos</span>(<span style="color:#8be9fd">int</span> x){
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">if</span> (x <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">0</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#ff79c6">return</span> ISPOS;
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">else</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">checkOdd</span>(<span style="color:#8be9fd">int</span> x){ };
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">checkPrime</span>(<span style="color:#8be9fd">int</span> x){ };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd">uint8_t</span> flags <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd">int</span> x;
+</span></span><span style="display:flex;"><span>	printf(<span style="color:#f1fa8c">&#34;Enter a number: &#34;</span>);
+</span></span><span style="display:flex;"><span>	scanf(<span style="color:#f1fa8c">&#34;%d&#34;</span>, <span style="color:#ff79c6">&amp;</span>x);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	flags <span style="color:#ff79c6">|=</span> checkPos(x) <span style="color:#ff79c6">|</span> checkOdd(x) <span style="color:#ff79c6">|</span> checkPrime(x);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+  Content under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a>
+    ·
+    
+      2021 -
+    
+    2022
+    ·
+  Source under <a rel="license" href="https://choosealicense.com/licenses/mit/">MIT</a>
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.f453d26c79f010446cf0d9770197f77de32c07b7a5512d141a286247fe154a22.js" integrity="sha256-9FPSbHnwEERs8Nl3AZf3feMsB7elUS0UGihiR/4VSiI="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

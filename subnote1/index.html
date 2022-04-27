@@ -12,7 +12,7 @@
     <meta name="author" content="Jaydeep Das">
     <meta name="description" content="Disclaimer: Notes can have errors. Mail me if you find some.     Few points to remember:
  Array indexing in C A trivial note about %s placeholder You cant actually pass an array to a function in C   Consider this code:
-int main(int argc, char** argv) { return 0; } &gt;&gt;&gt; ./test in1 in2 Here,
+int main(int argc, char** argv) {  return 0; } &gt;&gt;&gt; ./test in1 in2 Here,
  argc gives the number of arguments passed(3 in this case) argv gives you access to all the command line arguments passed when running the program  argv[0] is the first argument passed(i.">
     <meta name="keywords" content="blog,developer,personal">
 
@@ -20,13 +20,13 @@ int main(int argc, char** argv) { return 0; } &gt;&gt;&gt; ./test in1 in2 Here,
 <meta name="twitter:title" content="s1: Some notes about char **argv"/>
 <meta name="twitter:description" content="Disclaimer: Notes can have errors. Mail me if you find some.     Few points to remember:
  Array indexing in C A trivial note about %s placeholder You cant actually pass an array to a function in C   Consider this code:
-int main(int argc, char** argv) { return 0; } &gt;&gt;&gt; ./test in1 in2 Here,
+int main(int argc, char** argv) {  return 0; } &gt;&gt;&gt; ./test in1 in2 Here,
  argc gives the number of arguments passed(3 in this case) argv gives you access to all the command line arguments passed when running the program  argv[0] is the first argument passed(i."/>
 
     <meta property="og:title" content="s1: Some notes about char **argv" />
 <meta property="og:description" content="Disclaimer: Notes can have errors. Mail me if you find some.     Few points to remember:
  Array indexing in C A trivial note about %s placeholder You cant actually pass an array to a function in C   Consider this code:
-int main(int argc, char** argv) { return 0; } &gt;&gt;&gt; ./test in1 in2 Here,
+int main(int argc, char** argv) {  return 0; } &gt;&gt;&gt; ./test in1 in2 Here,
  argc gives the number of arguments passed(3 in this case) argv gives you access to all the command line arguments passed when running the program  argv[0] is the first argument passed(i." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jdeepd.github.io/subnote1/" /><meta property="article:section" content="" />
@@ -71,7 +71,7 @@ int main(int argc, char** argv) { return 0; } &gt;&gt;&gt; ./test in1 in2 Here,
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
-    <meta name="generator" content="Hugo 0.92.2" />
+    <meta name="generator" content="Hugo 0.96.0" />
   </head>
 
   
@@ -149,12 +149,12 @@ int main(int argc, char** argv) { return 0; } &gt;&gt;&gt; ./test in1 in2 Here,
 </ul>
 <hr>
 <p>Consider this code:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">int</span> argc, <span style="color:#8be9fd">char</span><span style="color:#ff79c6">**</span> argv)
-{
-   <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
-}
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&gt;&gt;&gt; ./test in1 in2
-</code></pre></div><p>Here,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">int</span> argc, <span style="color:#8be9fd">char</span><span style="color:#ff79c6">**</span> argv)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>   <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&gt;&gt;&gt; ./test in1 in2
+</span></span></code></pre></div><p>Here,</p>
 <ul>
 <li>argc gives the number of arguments passed(3 in this case)</li>
 <li>argv gives you access to all the command line arguments passed when running the program</li>
@@ -207,19 +207,19 @@ third character  of the first argument : &ldquo;t&rdquo;. Prefer it anytime over
     <i class="fa fa-link" aria-hidden="true"></i>
   </a>
 </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
-</span><span style="color:#ff79c6"></span>
-<span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>)
-{
-    <span style="color:#8be9fd">char</span> arr[] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;hello&#34;</span>;
-    printf(<span style="color:#f1fa8c">&#34;%c </span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, arr[<span style="color:#bd93f9">0</span>]) <span style="color:#6272a4">//prints h
-</span><span style="color:#6272a4"></span>}
-</code></pre></div><p>So, here the <code>char arr[]</code> decomposes into a pointer which points to the first character of the string &ldquo;hello&rdquo; (i.e &ldquo;h&rdquo;)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> arr[] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;hello&#34;</span>;
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;%c </span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, arr[<span style="color:#bd93f9">0</span>]) <span style="color:#6272a4">//prints h
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}
+</span></span></code></pre></div><p>So, here the <code>char arr[]</code> decomposes into a pointer which points to the first character of the string &ldquo;hello&rdquo; (i.e &ldquo;h&rdquo;)</p>
 <p><img src="/subnote1/img/2.jpg" alt="indexing"></p>
 <p>So, when you do <code>arr[index]</code>, it becomes <code>*(arr + index)</code>. <code>*</code> is used for <a href="https://stackoverflow.com/a/4955259/12982627">dereferencing</a> whatever is inside the memory address : <code>(arr + index)</code></p>
 <p>arr[0] -&gt; *(arr + 0) -&gt; *(100 + 0) -&gt; &lsquo;h&rsquo;</p>
-<p>arr[1] -&gt; *(arr + 1) -&gt; *(100 + 1) -&gt; &lsquo;e&rsquo;</p>
-<p>arr[2] -&gt; *(arr + 2) -&gt; *(100 + 2) -&gt; &lsquo;l&rsquo;</p>
+<p>arr[1] -&gt; *(arr + 1) -&gt; *(100 + 1) -&gt; &rsquo;e'</p>
+<p>arr[2] -&gt; *(arr + 2) -&gt; *(100 + 2) -&gt; &rsquo;l'</p>
 <hr>
 <h3 id="s-takes-in-a-pointerto-a-char">
   %s takes in a pointer(<em>to a char</em>)
@@ -228,13 +228,13 @@ third character  of the first argument : &ldquo;t&rdquo;. Prefer it anytime over
   </a>
 </h3>
 <p>Yes, Its a trivial thing but confusing because I initially thought it takes in a string(or array of characters)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
-</span><span style="color:#ff79c6"></span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>)
-{
-    <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>str <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Hello&#34;</span>; 
-    printf(<span style="color:#f1fa8c">&#34;%s&#34;</span>, str)
-}
-</code></pre></div><p><strong>Notice here that <code>%s</code> is actually holding <code>str</code>(a pointer) and not the dereferenced <code>*str</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>str <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Hello&#34;</span>; 
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;%s&#34;</span>, str)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Notice here that <code>%s</code> is actually holding <code>str</code>(a pointer) and not the dereferenced <code>*str</code></strong></p>
 <hr>
 <h3 id="you-cant-actually-pass-an-array-to-a-function-in-c">
   You cant actually pass an array to a function in C
@@ -244,10 +244,10 @@ third character  of the first argument : &ldquo;t&rdquo;. Prefer it anytime over
 </h3>
 <p>Thats right. Array as an argument to a function does not actually exist in C.
 So what happens when you do something like this?:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">func</span>(<span style="color:#8be9fd">int</span> arr[])
-{
-}
-</code></pre></div><p>If you pass an array to <code>func</code>, what gets passed into <code>func</code> is actually a <strong>pointer which stores the
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">func</span>(<span style="color:#8be9fd">int</span> arr[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>If you pass an array to <code>func</code>, what gets passed into <code>func</code> is actually a <strong>pointer which stores the
 location of the first element of the array.</strong> In other words, the array gets &ldquo;decomposed&rdquo; (<em>decompose; as in losing properties</em>)
 into a pointer.</p>
 <p>In this case, <code>int arr[]</code> is basically decomposing into <code>int *arr</code>. You can still do the normal array indexing using this pointer.</p>
@@ -278,7 +278,7 @@ into a pointer.</p>
 
     
       
-      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+      <script src="/js/coder.min.f453d26c79f010446cf0d9770197f77de32c07b7a5512d141a286247fe154a22.js" integrity="sha256-9FPSbHnwEERs8Nl3AZf3feMsB7elUS0UGihiR/4VSiI="></script>
     
 
     

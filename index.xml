@@ -6,7 +6,18 @@
     <description>Recent content on home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jdeepd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jdeepd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bit masking and bit flags. Managing data efficiently</title>
+      <link>https://jdeepd.github.io/posts/5.d/</link>
+      <pubDate>Tue, 26 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jdeepd.github.io/posts/5.d/</guid>
+      <description>Suppose you are given a situation where you have to produce some output which depends on various arguments(flags) that the user provides.
+For ex, lets say you are given a number and you are asked to do some tests on it:
+ Is the number postive? Is the magnitude(number) odd? Is the magnitude(number) prime?  You are also asked to save all the test results in memory so that you can pass it to other functions if required.</description>
+    </item>
+    
     <item>
       <title>A tour of my workflow</title>
       <link>https://jdeepd.github.io/posts/3.d/</link>
@@ -44,7 +55,7 @@ For browser, I primarily use Chrome(don&amp;rsquo;t ask me why. Its just that al
       <guid>https://jdeepd.github.io/subnote1/</guid>
       <description>Disclaimer: Notes can have errors. Mail me if you find some.     Few points to remember:
  Array indexing in C A trivial note about %s placeholder You cant actually pass an array to a function in C   Consider this code:
-int main(int argc, char** argv) { return 0; } &amp;gt;&amp;gt;&amp;gt; ./test in1 in2 Here,
+int main(int argc, char** argv) {  return 0; } &amp;gt;&amp;gt;&amp;gt; ./test in1 in2 Here,
  argc gives the number of arguments passed(3 in this case) argv gives you access to all the command line arguments passed when running the program  argv[0] is the first argument passed(i.</description>
     </item>
     

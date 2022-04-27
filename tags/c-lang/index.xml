@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C-lang on home</title>
+    <link>https://jdeepd.github.io/tags/c-lang/</link>
+    <description>Recent content in C-lang on home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 26 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jdeepd.github.io/tags/c-lang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bit masking and bit flags. Managing data efficiently</title>
+      <link>https://jdeepd.github.io/posts/5.d/</link>
+      <pubDate>Tue, 26 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jdeepd.github.io/posts/5.d/</guid>
+      <description>Suppose you are given a situation where you have to produce some output which depends on various arguments(flags) that the user provides.
+For ex, lets say you are given a number and you are asked to do some tests on it:
+ Is the number postive? Is the magnitude(number) odd? Is the magnitude(number) prime?  You are also asked to save all the test results in memory so that you can pass it to other functions if required.</description>
+    </item>
+    
+  </channel>
+</rss>
