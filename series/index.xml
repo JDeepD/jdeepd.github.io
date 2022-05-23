@@ -5,6 +5,16 @@
     <link>https://jdeepd.github.io/series/</link>
     <description>Recent content in Series on home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://jdeepd.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Mon, 23 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jdeepd.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSoC 22</title>
+      <link>https://jdeepd.github.io/series/gsoc-22/</link>
+      <pubDate>Mon, 23 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jdeepd.github.io/series/gsoc-22/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

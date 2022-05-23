@@ -2,22 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jdeepd.github.io/posts/6.d/</loc>
+    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jdeepd.github.io/authors/</loc>
-    <lastmod>2022-04-26T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jdeepd.github.io/series/gsoc-22/</loc>
+    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jdeepd.github.io/</loc>
+    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jdeepd.github.io/authors/jdeepd/</loc>
+    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jdeepd.github.io/posts/</loc>
+    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jdeepd.github.io/series/</loc>
+    <lastmod>2022-05-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jdeepd.github.io/posts/5.d/</loc>
     <lastmod>2022-04-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jdeepd.github.io/tags/c-lang/</loc>
-    <lastmod>2022-04-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jdeepd.github.io/</loc>
-    <lastmod>2022-04-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jdeepd.github.io/authors/jdeepd/</loc>
-    <lastmod>2022-04-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jdeepd.github.io/posts/</loc>
     <lastmod>2022-04-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jdeepd.github.io/tags/</loc>
@@ -51,7 +60,5 @@
     <lastmod>2021-11-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jdeepd.github.io/categories/</loc>
-  </url><url>
-    <loc>https://jdeepd.github.io/series/</loc>
   </url>
 </urlset>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GSoC 22 on home</title>
+    <link>https://jdeepd.github.io/series/gsoc-22/</link>
+    <description>Recent content in GSoC 22 on home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 23 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jdeepd.github.io/series/gsoc-22/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[GSoC] Week 0: Community Bonding Period</title>
+      <link>https://jdeepd.github.io/posts/6.d/</link>
+      <pubDate>Mon, 23 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jdeepd.github.io/posts/6.d/</guid>
+      <description>So, I my proposal to the org git got accepted for GSoC 2022. For next few days, I will be exploring the codebase, also try to make some side contributions under the mentorship of Christian and Hariom. I am already in contact with them regarding the proposal.
+Till now, I have read most the &amp;ldquo;getting started&amp;rdquo; docs in Hacking Git. Yesterday, I was reading this very interesting tutorial on Write yourself a Git.</description>
+    </item>
+    
+  </channel>
+</rss>
