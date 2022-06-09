@@ -6,7 +6,18 @@
     <description>Recent content in Posts on home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 23 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jdeepd.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Jun 2022 21:01:32 +0530</lastBuildDate><atom:link href="https://jdeepd.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[GSoC] Week 1: Diving into ref-filters and for-each-ref</title>
+      <link>https://jdeepd.github.io/posts/7.d/</link>
+      <pubDate>Thu, 02 Jun 2022 21:01:32 +0530</pubDate>
+      
+      <guid>https://jdeepd.github.io/posts/7.d/</guid>
+      <description>So this week, I dived into the codebase of ref-filters.c and for builtins/for-each-ref.c. In this blog, I will try to give a brief overview of those.
+Before that, you should know what Git References or simply, refs are.
+git for-each-ref is a simple command for listing out all(or maybe some) of the refs in a repository in a specific format. For ex, you want to print out the refs inside .</description>
+    </item>
+    
     <item>
       <title>[GSoC] Week 0: Community Bonding Period</title>
       <link>https://jdeepd.github.io/posts/6.d/</link>
