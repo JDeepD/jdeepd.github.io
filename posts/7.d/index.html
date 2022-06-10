@@ -169,7 +169,7 @@ with that hash.</p>
 </span></span><span style="display:flex;"><span>Ref: %(refname)
 </span></span><span style="display:flex;"><span>%(body)&#39; \
 </span></span><span style="display:flex;"><span>&#39;refs/heads&#39;
-</span></span></code></pre></div><p>The things inside <code>%()</code> are called atoms(in git codebase). These atoms hold the data regarding a particular ref
+</span></span></code></pre></div><p>The things inside <code>%()</code> are called atoms (in Git codebase). These atoms hold the data regarding a particular ref
 and you can print out those information using the atom name. See more field names <a href="https://git-scm.com/docs/git-for-each-ref#_field_names">here</a></p>
 <p>Now lets see how things work internally for <code>git-for-each-ref</code>.</p>
 <p>Here is a very simple (pseudo)code for it:</p>
@@ -183,7 +183,7 @@ and you can print out those information using the atom name. See more field name
 </span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">struct</span> strbuf err <span style="color:#ff79c6">=</span> STRBUF_INIT;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	[
-</span></span><span style="display:flex;"><span>	Collect the additional data(format etc) that the user provided using the parse<span style="color:#ff79c6">-</span>options API of git.
+</span></span><span style="display:flex;"><span>	Collect the additional data (format etc) that the user provided using the parse<span style="color:#ff79c6">-</span>options API of Git.
 </span></span><span style="display:flex;"><span>	Fill those data into the appropriate data structures declared above.
 </span></span><span style="display:flex;"><span>	See more about it in Documentation<span style="color:#ff79c6">/</span>technical<span style="color:#ff79c6">/</span>api<span style="color:#ff79c6">-</span>parse<span style="color:#ff79c6">-</span>options.txt
 </span></span><span style="display:flex;"><span>	]
@@ -206,9 +206,9 @@ and you can print out those information using the atom name. See more field name
 </span></span><span style="display:flex;"><span>	strbuf_release(<span style="color:#ff79c6">&amp;</span>output);
 </span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Lets briefly talk about the data structures declared here. You see, git has its own data structures
+</span></span></code></pre></div><p>Lets briefly talk about the data structures declared here. You see, Git has its own data structures
 for almost every object. So you wont easily find something like <code>char str[10];</code> etc in the codebase.
-Instead, for storing strings, git uses the the <code>strbuf</code> data structure. You can read about its usage
+Instead, for storing strings, Git uses the the <code>strbuf</code> data structure. You can read about its usage
 in <code>strbuf.{c,h}</code>. Why is it necessary? Well, it abstracts a lot of trivial tasks. If you want to convert
 all characters of <code>sb</code> to lowercase, you can just do <code>strbuf_tolower(sb)</code>.</p>
 <p><code>ref_filter</code>, <code>ref_format</code>, <code>ref_array</code> are similar data structures. Read more about them in <a href="https://github.com/git/git/blob/master/ref-filter.h">ref-filter.h</a></p>
@@ -216,7 +216,7 @@ all characters of <code>sb</code> to lowercase, you can just do <code>strbuf_tol
 of <code>array</code>. Now, loop thorugh each element(<code>ref</code>) of <code>array</code>, format it in given format and populate the output
 in <code>output</code> buffer. Print out the <code>output</code> buffer. That is it. Now do some freeing up and its done.</p>
 <p>The function <code>format_ref_array_item</code> is defined in <code>ref-filter.{c,h}</code> and it is what does most of the abstraction here.</p>
-<p><code>ref-filter.c</code> has a lot of functions for handling refs. But still many git commands manually write the logic which is
+<p><code>ref-filter.c</code> has a lot of functions for handling refs. But still many Git commands manually write the logic which is
 already available in <code>ref-filter.c</code>. All those redundant logic has to be replaced without breaking the code and maintaining
 backward compatibility.</p>
 <p>For this week, my plans are to read and understand the codebase of <code>pretty.{c,h}</code> and make some code contributions.</p>
