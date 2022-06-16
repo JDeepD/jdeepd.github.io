@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Jaydeep Das">
+    <meta name="description" content="All hail GDB
+ This week started off with a bug. git branch was not working with the verbose flag. It was causing a realloc error. For around 10 minutes, I tried to read some code in cmd_branch, try to figure out where the verbose option leads to, until I gave up, totally finding myself in the middle of a codemaze.
+This is where GDB comes to the rescue. I knew using basic GDB but never used it on a big enough codebase like Git so I was reluctant to use it in the beginning.">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[GSoC] Week 3: The coding[debugging] phase"/>
+<meta name="twitter:description" content="All hail GDB
+ This week started off with a bug. git branch was not working with the verbose flag. It was causing a realloc error. For around 10 minutes, I tried to read some code in cmd_branch, try to figure out where the verbose option leads to, until I gave up, totally finding myself in the middle of a codemaze.
+This is where GDB comes to the rescue. I knew using basic GDB but never used it on a big enough codebase like Git so I was reluctant to use it in the beginning."/>
+
+    <meta property="og:title" content="[GSoC] Week 3: The coding[debugging] phase" />
+<meta property="og:description" content="All hail GDB
+ This week started off with a bug. git branch was not working with the verbose flag. It was causing a realloc error. For around 10 minutes, I tried to read some code in cmd_branch, try to figure out where the verbose option leads to, until I gave up, totally finding myself in the middle of a codemaze.
+This is where GDB comes to the rescue. I knew using basic GDB but never used it on a big enough codebase like Git so I was reluctant to use it in the beginning." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdeepd.github.io/posts/9.d/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-15T00:00:00+00:00" />
+
+
+
+    <title>
+  [GSoC] Week 3: The coding[debugging] phase · home
+</title>
+
+    
+      <link rel="canonical" href="https://jdeepd.github.io/posts/9.d/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.11033c6f872d83b40a8d367bd4432394971a07c3cc77ed240c67642e8c38f28f.css" integrity="sha256-EQM8b4ctg7QKjTZ71EMjlJcaB8PMd&#43;0kDGdkLow48o8=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.3820b6053ca1b6473f1d15daae20719d25fdad76cb9ae8b95ba2c2f56a31c9cb.css" integrity="sha256-OCC2BTyhtkc/HRXariBxnSX9rXbLmui5W6LC9Woxycs=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.99.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-dark">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      home
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">about</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/notes/">notes</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://jdeepd.github.io/posts/9.d/">
+              [GSoC] Week 3: The coding[debugging] phase
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2022-06-15T00:00:00Z'>
+                June 15, 2022
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <blockquote>
+<p>All hail GDB</p>
+</blockquote>
+<p><img src="https://imgs.xkcd.com/comics/debugging.png" alt="xkcd"></p>
+<p>This week started off with a bug.
+<code>git branch</code> was not working with the verbose flag. It was causing
+a <code>realloc</code> error. For around 10 minutes, I tried to read some code
+in <code>cmd_branch</code>, try to figure out where the verbose option leads to,
+until I gave up, totally finding myself in the middle of a codemaze.</p>
+<p>This is where GDB comes to the rescue. I knew using basic GDB but never used
+it on a big enough codebase like <code>Git</code> so I was reluctant to use it in the beginning.
+<a href="https://public-inbox.org/git/CAP8UFD3Bd4Af1XZ00VyuHnQs=MFrdUufKeePO1tyedWoReRjwQ@mail.gmail.com/T/#t">Here is a good tutorial</a>
+by Christian on how to debug using GDB.</p>
+<p>The tutorial should be helpful enough but still, I would like to document
+how I debugged the problem.</p>
+<p>After any failed test, you cd into <code>t/trash\ directory.{test_name}</code>.
+<em>Generally</em> will be couple of files there but the ones we will be interested in are</p>
+<p><code>actual</code> : The output given by git</p>
+<p><code>expect</code> : The output expected</p>
+<p><code>err</code>    : Log errors if there were any</p>
+<p>Tests fail when either of two happens:</p>
+<ol>
+<li>actual and expect are not <em>identical</em></li>
+<li>err occurs</li>
+</ol>
+<p>In my case, I got the following error:
+<code>fatal: out of memory, realloc failed</code></p>
+<p>Not much information, but atleast we know what part of code might have caused it.</p>
+<p>Lets begin begin debugging then,</p>
+<ol>
+<li><code>gdb ./git</code> should debug your compiled git(in root directory of the project)</li>
+<li><code>lay next</code> will open up a section with the assembly instructions in it. Hit <code>enter</code> a
+couple of times till you see the C code like in the image:</li>
+</ol>
+<p><img src="./img.d/1.png" alt="1.d"></p>
+<ol start="3">
+<li>Set up a break point in the desired line or function. <code>break cmd_branch</code></li>
+<li>Next, run the Git command that is causing the error. <code>run branch -v</code></li>
+<li>It will stop the execution exactly at the breakpoint.</li>
+<li>To execute the next line, enter <code>n</code> or <code>next</code>. To step inside a function, enter <code>s</code> or <code>step</code>
+To print a variable, enter <code>p &lt;variable name&gt;</code>.</li>
+</ol>
+<p>After doing these steps a couple of times, I reached the section in <code>ref-filter.c</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">indent_copy_msg</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">**</span>msg, <span style="color:#8be9fd">int</span> msglen,
+</span></span><span style="display:flex;"><span>			    <span style="color:#ff79c6">struct</span> strbuf <span style="color:#ff79c6">*</span>sb, <span style="color:#8be9fd">int</span> indent)
+</span></span><span style="display:flex;"><span>				...
+</span></span><span style="display:flex;"><span>		strbuf_grow(sb, linelen <span style="color:#ff79c6">+</span> indent <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">20</span>);
+</span></span><span style="display:flex;"><span>		add_indentation(line, linelen, sb, indent);
+</span></span><span style="display:flex;"><span>		strbuf_addch(sb, <span style="color:#f1fa8c">&#39;\n&#39;</span>);
+</span></span><span style="display:flex;"><span>		...
+</span></span></code></pre></div><p><code>./git</code> crashed after this <code>strbuf_grow</code> line. <code>indent</code> was an exceptionally large
+integer. It turned out to be a garbage value. The function which calls <code>indent_copy_msg</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">grab_sub_body_contents</span>(<span style="color:#ff79c6">struct</span> atom_value <span style="color:#ff79c6">*</span>val, <span style="color:#8be9fd">int</span> deref, <span style="color:#ff79c6">struct</span> expand_data <span style="color:#ff79c6">*</span>data)
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> (atom<span style="color:#ff79c6">-&gt;</span>u.contents.option <span style="color:#ff79c6">==</span> C_SUB) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> (used_atom<span style="color:#ff79c6">-&gt;</span>indent_val) {
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">struct</span> strbuf sb <span style="color:#ff79c6">=</span> STRBUF_INIT;
+</span></span><span style="display:flex;"><span>                indent_copy_msg(<span style="color:#ff79c6">&amp;</span>subpos, sublen, <span style="color:#ff79c6">&amp;</span>sb, used_atom<span style="color:#ff79c6">-&gt;</span>indent_val);
+</span></span><span style="display:flex;"><span>                v<span style="color:#ff79c6">-&gt;</span>s <span style="color:#ff79c6">=</span> strbuf_detach(<span style="color:#ff79c6">&amp;</span>sb, <span style="color:#8be9fd;font-style:italic">NULL</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#ff79c6">else</span>
+</span></span><span style="display:flex;"><span>                v<span style="color:#ff79c6">-&gt;</span>s <span style="color:#ff79c6">=</span> copy_subject(subpos, sublen);
+</span></span></code></pre></div><p>passed an uninitialized value of <code>used_atom-&gt;indent_val</code>.</p>
+<p>That was the bug! After initializing the <code>indent_val</code>, it was fixed.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+  Content under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a>
+    ·
+    
+      2021 -
+    
+    2022
+    ·
+  Source under <a rel="license" href="https://choosealicense.com/licenses/mit/">MIT</a>
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.f453d26c79f010446cf0d9770197f77de32c07b7a5512d141a286247fe154a22.js" integrity="sha256-9FPSbHnwEERs8Nl3AZf3feMsB7elUS0UGihiR/4VSiI="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

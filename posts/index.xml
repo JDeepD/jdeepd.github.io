@@ -6,7 +6,28 @@
     <description>Recent content in Posts on home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 02 Jun 2022 21:01:32 +0530</lastBuildDate><atom:link href="https://jdeepd.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jdeepd.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[GSoC] Week 3: The coding[debugging] phase</title>
+      <link>https://jdeepd.github.io/posts/9.d/</link>
+      <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jdeepd.github.io/posts/9.d/</guid>
+      <description>All hail GDB
+ This week started off with a bug. git branch was not working with the verbose flag. It was causing a realloc error. For around 10 minutes, I tried to read some code in cmd_branch, try to figure out where the verbose option leads to, until I gave up, totally finding myself in the middle of a codemaze.
+This is where GDB comes to the rescue. I knew using basic GDB but never used it on a big enough codebase like Git so I was reluctant to use it in the beginning.</description>
+    </item>
+    
+    <item>
+      <title>[GSoC] Week 2: Getting it all together</title>
+      <link>https://jdeepd.github.io/posts/8.d/</link>
+      <pubDate>Thu, 09 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jdeepd.github.io/posts/8.d/</guid>
+      <description>This week was a bit engaging(probably the most engaging till now). So, I had to start off where Hariom left. His work already ported most of the pretty formats to use ref-filter&amp;rsquo;s logic. But I couldn&amp;rsquo;t just start off from that branch directly since its more than a year old. A lot of changes have happened since then.
+So first, I had to rebase pretty-lib-2.0.3 onto current master. I pulled that branch and began rebasing to master.</description>
+    </item>
+    
     <item>
       <title>[GSoC] Week 1: Diving into ref-filters and for-each-ref</title>
       <link>https://jdeepd.github.io/posts/7.d/</link>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Jaydeep Das">
+    <meta name="description" content="This week was a bit engaging(probably the most engaging till now). So, I had to start off where Hariom left. His work already ported most of the pretty formats to use ref-filter&rsquo;s logic. But I couldn&rsquo;t just start off from that branch directly since its more than a year old. A lot of changes have happened since then.
+So first, I had to rebase pretty-lib-2.0.3 onto current master. I pulled that branch and began rebasing to master.">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[GSoC] Week 2: Getting it all together"/>
+<meta name="twitter:description" content="This week was a bit engaging(probably the most engaging till now). So, I had to start off where Hariom left. His work already ported most of the pretty formats to use ref-filter&rsquo;s logic. But I couldn&rsquo;t just start off from that branch directly since its more than a year old. A lot of changes have happened since then.
+So first, I had to rebase pretty-lib-2.0.3 onto current master. I pulled that branch and began rebasing to master."/>
+
+    <meta property="og:title" content="[GSoC] Week 2: Getting it all together" />
+<meta property="og:description" content="This week was a bit engaging(probably the most engaging till now). So, I had to start off where Hariom left. His work already ported most of the pretty formats to use ref-filter&rsquo;s logic. But I couldn&rsquo;t just start off from that branch directly since its more than a year old. A lot of changes have happened since then.
+So first, I had to rebase pretty-lib-2.0.3 onto current master. I pulled that branch and began rebasing to master." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdeepd.github.io/posts/8.d/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-09T00:00:00+00:00" />
+
+
+
+    <title>
+  [GSoC] Week 2: Getting it all together · home
+</title>
+
+    
+      <link rel="canonical" href="https://jdeepd.github.io/posts/8.d/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.11033c6f872d83b40a8d367bd4432394971a07c3cc77ed240c67642e8c38f28f.css" integrity="sha256-EQM8b4ctg7QKjTZ71EMjlJcaB8PMd&#43;0kDGdkLow48o8=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.3820b6053ca1b6473f1d15daae20719d25fdad76cb9ae8b95ba2c2f56a31c9cb.css" integrity="sha256-OCC2BTyhtkc/HRXariBxnSX9rXbLmui5W6LC9Woxycs=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.99.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-dark">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      home
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">about</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/notes/">notes</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://jdeepd.github.io/posts/8.d/">
+              [GSoC] Week 2: Getting it all together
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2022-06-09T00:00:00Z'>
+                June 9, 2022
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <p>This week was a bit engaging(probably the most engaging till now). So, I had
+to start off where Hariom left. <a href="https://github.com/harry-hov/git/commits/pretty-lib-2.0.3-test">His work</a>
+already ported most of the pretty formats to use ref-filter&rsquo;s logic. But I couldn&rsquo;t just start off from that branch
+directly since its more than a year old. A lot of changes have happened since then.</p>
+<p>So first, I had to rebase <code>pretty-lib-2.0.3</code> onto current master. I pulled that branch and began rebasing to master.
+Well, I got rebase conflicts(which was expected) but when you get rebase conflicts on a codebase where you donot
+have a good track of its history, things become messy. I would suggest if you ever have to resolve conflicts,
+prefer a GUI(Gitkraken or something similar) over TUI/text editor. I tried resolving those conflicts using just a text editor
+and it was horrible. I spent almost 3 hours messing something up, aborting, trying again. It was tedious but I later used Gitkraken.
+It still took time to resolve the conflicts manually but it was far less than what I would have spent if I resolved them on a text editor.</p>
+<p>Here is the <a href="https://github.com/JDeepD/git-1/commits/pretty-lib-2.0.3-2">rebased branch</a>.</p>
+<p>Some of the changes where breaking some tests, so I had to a make a new commit on top of that branch fixing those.</p>
+<p>Next week, I will look into some failing test cases and try to resolve those.</p>
+<p>Till then, thank you for reading!</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+  Content under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a>
+    ·
+    
+      2021 -
+    
+    2022
+    ·
+  Source under <a rel="license" href="https://choosealicense.com/licenses/mit/">MIT</a>
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.f453d26c79f010446cf0d9770197f77de32c07b7a5512d141a286247fe154a22.js" integrity="sha256-9FPSbHnwEERs8Nl3AZf3feMsB7elUS0UGihiR/4VSiI="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>
