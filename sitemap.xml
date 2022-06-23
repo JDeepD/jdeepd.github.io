@@ -2,19 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jdeepd.github.io/posts/9.d/</loc>
-    <lastmod>2022-06-15T00:00:00+00:00</lastmod>
+    <loc>https://jdeepd.github.io/posts/10.d/</loc>
+    <lastmod>2022-06-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jdeepd.github.io/tags/gsoc/</loc>
-    <lastmod>2022-06-15T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jdeepd.github.io/</loc>
-    <lastmod>2022-06-15T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jdeepd.github.io/posts/</loc>
-    <lastmod>2022-06-15T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jdeepd.github.io/tags/</loc>
+    <lastmod>2022-06-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jdeepd.github.io/posts/9.d/</loc>
     <lastmod>2022-06-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jdeepd.github.io/posts/8.d/</loc>
