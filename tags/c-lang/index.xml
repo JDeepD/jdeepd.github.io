@@ -15,7 +15,7 @@
       <guid>https://jdeepd.github.io/posts/5.d/</guid>
       <description>Suppose you are given a situation where you have to produce some output which depends on various arguments(flags) that the user provides.
 For ex, lets say you are given a number and you are asked to do some tests on it:
- Is the number postive? Is the magnitude(number) odd? Is the magnitude(number) prime?  You are also asked to save all the test results in memory so that you can pass it to other functions if required.</description>
+Is the number postive? Is the magnitude(number) odd? Is the magnitude(number) prime? You are also asked to save all the test results in memory so that you can pass it to other functions if required.</description>
     </item>
     
   </channel>

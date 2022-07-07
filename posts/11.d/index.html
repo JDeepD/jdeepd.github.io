@@ -10,32 +10,28 @@
     
 
     <meta name="author" content="Jaydeep Das">
-    <meta name="description" content="So, My proposal to the org git got accepted for GSoC 2022. For the next few days, I will be exploring the codebase, also try to make some side contributions under the mentorship of Christian and Hariom. I am already in contact with them regarding the proposal.
-Till now, I have read most the &ldquo;getting started&rdquo; docs in Hacking Git. Yesterday, I was reading this very interesting tutorial on Write yourself a Git.">
+    <meta name="description" content="In the process to make pretty-formats use ref-filter&rsquo;s logic, it is important to ensure that ref-filter has an &ldquo;equivalent format&rdquo; for all the pretty formats. There are these &quot;%G*&quot; pretty formats which are for getting information related to GPG signatures of commits. ref-filter however, do not have these format options. So, migrating completely, we have to first implement this format in ref-filter. Lucky for me, Hariom already did it in 2021.">
     <meta name="keywords" content="blog,developer,personal">
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[GSoC] Week 0: Community Bonding Period"/>
-<meta name="twitter:description" content="So, My proposal to the org git got accepted for GSoC 2022. For the next few days, I will be exploring the codebase, also try to make some side contributions under the mentorship of Christian and Hariom. I am already in contact with them regarding the proposal.
-Till now, I have read most the &ldquo;getting started&rdquo; docs in Hacking Git. Yesterday, I was reading this very interesting tutorial on Write yourself a Git."/>
+<meta name="twitter:title" content="[GSoC] Week 5: Signature atom"/>
+<meta name="twitter:description" content="In the process to make pretty-formats use ref-filter&rsquo;s logic, it is important to ensure that ref-filter has an &ldquo;equivalent format&rdquo; for all the pretty formats. There are these &quot;%G*&quot; pretty formats which are for getting information related to GPG signatures of commits. ref-filter however, do not have these format options. So, migrating completely, we have to first implement this format in ref-filter. Lucky for me, Hariom already did it in 2021."/>
 
-    <meta property="og:title" content="[GSoC] Week 0: Community Bonding Period" />
-<meta property="og:description" content="So, My proposal to the org git got accepted for GSoC 2022. For the next few days, I will be exploring the codebase, also try to make some side contributions under the mentorship of Christian and Hariom. I am already in contact with them regarding the proposal.
-Till now, I have read most the &ldquo;getting started&rdquo; docs in Hacking Git. Yesterday, I was reading this very interesting tutorial on Write yourself a Git." />
+    <meta property="og:title" content="[GSoC] Week 5: Signature atom" />
+<meta property="og:description" content="In the process to make pretty-formats use ref-filter&rsquo;s logic, it is important to ensure that ref-filter has an &ldquo;equivalent format&rdquo; for all the pretty formats. There are these &quot;%G*&quot; pretty formats which are for getting information related to GPG signatures of commits. ref-filter however, do not have these format options. So, migrating completely, we have to first implement this format in ref-filter. Lucky for me, Hariom already did it in 2021." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jdeepd.github.io/posts/6.d/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-05-23T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-23T00:00:00+00:00" />
-
+<meta property="og:url" content="https://jdeepd.github.io/posts/11.d/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-29T15:04:46+05:30" />
+<meta property="article:modified_time" content="2022-06-29T15:04:46+05:30" />
 
 
 
     <title>
-  [GSoC] Week 0: Community Bonding Period · home
+  [GSoC] Week 5: Signature atom · home
 </title>
 
     
-      <link rel="canonical" href="https://jdeepd.github.io/posts/6.d/">
+      <link rel="canonical" href="https://jdeepd.github.io/posts/11.d/">
     
 
     <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
@@ -123,8 +119,8 @@ Till now, I have read most the &ldquo;getting started&rdquo; docs in Hacking Git
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://jdeepd.github.io/posts/6.d/">
-              [GSoC] Week 0: Community Bonding Period
+            <a class="title-link" href="https://jdeepd.github.io/posts/11.d/">
+              [GSoC] Week 5: Signature atom
             </a>
           </h1>
         </div>
@@ -132,8 +128,8 @@ Till now, I have read most the &ldquo;getting started&rdquo; docs in Hacking Git
           <div class="date">
             <span class="posted-on">
               <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2022-05-23T00:00:00Z'>
-                May 23, 2022
+              <time datetime='2022-06-29T15:04:46&#43;05:30'>
+                June 29, 2022
               </time>
             </span>
             <span class="reading-time">
@@ -156,37 +152,24 @@ Till now, I have read most the &ldquo;getting started&rdquo; docs in Hacking Git
 
       <div>
         
-        <p>So, My <a href="https://docs.google.com/document/d/1qq-Xze6dMGMSx3rPHD0VEc4f0a87KnHgbka1Dzpf8sc/edit?usp=sharing">proposal</a> to the org git
-got accepted for GSoC 2022. For the next few days, I will be exploring the codebase, also try to make some side contributions under the mentorship
-of Christian and Hariom. I am already in contact with them regarding the proposal.</p>
-<p>Till now, I have read most the &ldquo;getting started&rdquo; docs in <a href="https://git.github.io/Hacking-Git/">Hacking Git</a>. Yesterday, I was reading this
-very interesting tutorial on <a href="https://wyag.thb.lt/">Write yourself a Git</a>. Its basically a prototype implementation of git in Python. Currently,
-the git codebase is too large to explore everything from scratch so this tutorial gives some insight on just the core functionality and working of git.</p>
-<p>This week, I have following targets:</p>
-<ol>
-<li>Complete the tutorial asap.</li>
-<li>Go through the previous works of Hariom, ZheNing and Olga.</li>
-<li><strong>If possible</strong>, lurk into some beginner patches and try to review them.</li>
-</ol>
-<p>I will pushing all my work to my <a href="https://github.com/JDeepD/git-1">git fork</a> on Github. Will update
-about the branch later.</p>
-<p>Overall, I am pretty excited to work for such a popular and reputed open-source project.</p>
-<p>Will be posting weekly :) on updates/difficulties and solutions that I face during the journey.</p>
-<p>Till then, Signing off.</p>
+        <p>In the process to make pretty-formats use ref-filter&rsquo;s logic, it is important
+to ensure that ref-filter has an &ldquo;equivalent format&rdquo; for all the pretty formats.
+There are these <code>&quot;%G*&quot;</code> <a href="https://git-scm.com/docs/pretty-formats#Documentation/pretty-formats.txt-emGGem">pretty formats</a>
+which are for getting information related to GPG signatures of commits. <code>ref-filter</code> however, do not have these format options.
+So, migrating completely, we have to first implement this format in <code>ref-filter</code>. Lucky for me, Hariom already did it in 2021.
+However it was not merged because it needed some refactoring.</p>
+<p>So this week, I plan to refactor whatever is needed, get the <code>signature</code> atom working and getting it merged to master.</p>
+<p>I also have to write some tests for the new atom. This is the part I have look more into because, firstly this is something new,
+and secondly, I dont think there is plumbing command which gives information related to signature of a commit.
+I might get some inspiration from how <code>git-log</code>&rsquo;s tests handle that for the pretty format.</p>
+<p>This is it for this week.</p>
+<p>Signing off.</p>
 
       </div>
 
 
       <footer>
         
-
-<section class="see-also">
-  
-    
-    
-    
-  
-</section>
 
 
         

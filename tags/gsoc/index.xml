@@ -6,7 +6,16 @@
     <description>Recent content in GSoC on home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 22 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jdeepd.github.io/tags/gsoc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Jun 2022 15:04:46 +0530</lastBuildDate><atom:link href="https://jdeepd.github.io/tags/gsoc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[GSoC] Week 5: Signature atom</title>
+      <link>https://jdeepd.github.io/posts/11.d/</link>
+      <pubDate>Wed, 29 Jun 2022 15:04:46 +0530</pubDate>
+      
+      <guid>https://jdeepd.github.io/posts/11.d/</guid>
+      <description>In the process to make pretty-formats use ref-filter&amp;rsquo;s logic, it is important to ensure that ref-filter has an &amp;ldquo;equivalent format&amp;rdquo; for all the pretty formats. There are these &amp;quot;%G*&amp;quot; pretty formats which are for getting information related to GPG signatures of commits. ref-filter however, do not have these format options. So, migrating completely, we have to first implement this format in ref-filter. Lucky for me, Hariom already did it in 2021.</description>
+    </item>
+    
     <item>
       <title>[GSoC] Week 4: Time to get some reviews</title>
       <link>https://jdeepd.github.io/posts/10.d/</link>
@@ -24,7 +33,7 @@ Apart from that, there is one more bug that I am trying to figure out how to sol
       
       <guid>https://jdeepd.github.io/posts/9.d/</guid>
       <description>All hail GDB
- This week started off with a bug. git branch was not working with the verbose flag. It was causing a realloc error. For around 10 minutes, I tried to read some code in cmd_branch, try to figure out where the verbose option leads to, until I gave up, totally finding myself in the middle of a codemaze.
+This week started off with a bug. git branch was not working with the verbose flag. It was causing a realloc error. For around 10 minutes, I tried to read some code in cmd_branch, try to figure out where the verbose option leads to, until I gave up, totally finding myself in the middle of a codemaze.
 This is where GDB comes to the rescue. I knew using basic GDB but never used it on a big enough codebase like Git so I was reluctant to use it in the beginning.</description>
     </item>
     
